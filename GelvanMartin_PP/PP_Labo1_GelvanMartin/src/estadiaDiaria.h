@@ -18,8 +18,15 @@ typedef struct {
 	int telefonoContacto;
 	int idPerro;
 	int fecha;
+	int estadoEstadia;
 
 } eEstadiaDiaria;
 
+void estadia_inicializarArray(eEstadiaDiaria estadias[], int tam);
+void estadia_hardCodearEstadia(eEstadiaDiaria estadias[], int tam);
+int estadia_buscarEspacioLibre(eEstadiaDiaria estadias[], int tam);
+void estadia_mostrarUno(eEstadiaDiaria estadia);
+void estadia_mostrarTodos(eEstadiaDiaria estadias[], int tam);
+int estadia_buscarPorId(eEstadiaDiaria estadias[], int tam, int id);
 
 #endif /* ESTADIADIARIA_H_ */
