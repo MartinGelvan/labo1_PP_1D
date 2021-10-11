@@ -30,5 +30,6 @@ void perro_mostrarUno(ePerro perro);
 void perro_mostrarTodos(ePerro perros[], int tam);
 int perro_cargarUno(ePerro perros[], int i,int ultimoId);
 int perro_agregarPerro(ePerro perros[], int tam, int ultimoId);
+int perro_borrarUno(ePerro perros[], int tam);
 
 #endif /* PERROS_H_ */

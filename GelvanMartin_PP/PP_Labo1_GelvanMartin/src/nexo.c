@@ -97,3 +97,45 @@ int perro_Estadia_Fecha_agregarEstadiaPerro(ePerro perros[],int tam,eEstadiaDiar
 
 }
 
+int estadia_cancelarEstadia(eEstadiaDiaria estadias[], int tam, ePerro perros[], int tamPerro)
+{
+	int retorno = -1;
+	int index;
+	int idIngresado;
+	int idPerroEncontrado;
+
+	pedirEntero(&idIngresado, "Ingrese el ID de la estadia a cancelar (100000-170000): ",
+				"Reingrese el ID de la estadia a cancelar (100000-170000): ", 100000, 170000);
+	index = estadia_buscarPorId(estadias, tam, idIngresado);
+
+	if(index != -1)
+	{
+		printf("\nEstadia a cancelar:\n\n%-5s %-20s %-20s\n", "ID", "NOMBRE DUENIO", "TELEFONO CONTACTO");
+		printf("\nบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบ\n");
+		estadia_mostrarUno(estadias[index]);
+		printf("\nบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบ\n");
+
+		idPerroEncontrado=perro_buscarPorId(perros,tamPerro, estadias[index].idPerro);
+
+
+
+
+		if(pedirConfirmacion("\nIngrese 's' para confirmar la baja del producto: ")==0)
+		{
+			estadias[index].estadoEstadia = VACIO;
+			perros[idPerroEncontrado].estadoPerro=VACIO;
+			printf("\nEstadia %d cancelada exitosamente\n\n", estadias[index].id);
+			retorno = 0;
+		}
+		else
+		{
+			printf("\nSe cancelo la cancelacion de la estadia.\n\n");
+		}
+	}
+	else
+	{
+		printf("\nError, estadia no encontrada...\n\n");
+	}
+
+	return retorno;
+}

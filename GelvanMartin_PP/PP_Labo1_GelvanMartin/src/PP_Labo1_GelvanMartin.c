@@ -24,6 +24,7 @@ int main(void) {
 	eEstadiaDiaria arrayEstadias[TAMESTADIAS];
 	eFecha arrayFechas[TAMFECHAS];
 	int cantidadEstadias=0;
+	int cantidadPerros=0;
 
 
 
@@ -64,6 +65,7 @@ int main(void) {
 			if(perro_Estadia_Fecha_agregarEstadiaPerro(arrayPerros,TAMPERROS,arrayEstadias,TAMESTADIAS,arrayFechas, TAMFECHAS,ultimoIdEstadia)==0)
 			{
 				cantidadEstadias++;
+				cantidadPerros++;
 				ultimoIdEstadia++;
 			}
 			system("pause");
@@ -72,7 +74,13 @@ int main(void) {
 
 			break;
 		case 3:
-
+			estadia_mostrarTodos(arrayEstadias, TAMESTADIAS);
+			if(estadia_cancelarEstadia(arrayEstadias, TAMESTADIAS, arrayPerros, TAMPERROS)==0)
+			{
+				cantidadEstadias--;
+				cantidadPerros--;
+			}
+			system("pause");
 			break;
 		case 4:
 

@@ -138,3 +138,38 @@ int perro_agregarPerro(ePerro perros[], int tam, int ultimoId)
 	return retorno;
 
 }
+
+int perro_borrarUno(ePerro perros[], int tam)
+{
+	int idIngresado;
+	int index;
+	int retorno = -1;
+
+
+	pedirEntero(&idIngresado, "Ingrese el ID del perro que quiera darle de baja (7000-8000): ",
+				"Reingrese el ID del perro que quiera darle de baja (7000-8000): ", 7000, 8000);
+	index = perro_buscarPorId(perros, tam, idIngresado);
+
+	if(index != -1)
+	{
+		printf("\nPerro a darle de baja:\n\n%-15s %-20s %-20s %-20s\n", "ID", "NOMBRE", "RAZA", "EDAD");
+		perro_mostrarUno(perros[index]);
+
+		if(pedirConfirmacion("\nIngrese 's' para confirmar la baja del producto: ")==0)
+		{
+			perros[index].estadoPerro = VACIO;
+			printf("\nPerro %s dado de baja exitosamente\n\n", perros[index].nombre);
+			retorno = 0;
+		}
+		else
+		{
+			printf("\nSe cancelo la baja del producto.\n\n");
+		}
+	}
+	else
+	{
+		printf("\nError. Producto no encontrado...\n\n");
+	}
+
+	return retorno;
+}

@@ -28,5 +28,6 @@ int estadia_buscarEspacioLibre(eEstadiaDiaria estadias[], int tam);
 void estadia_mostrarUno(eEstadiaDiaria estadia);
 void estadia_mostrarTodos(eEstadiaDiaria estadias[], int tam);
 int estadia_buscarPorId(eEstadiaDiaria estadias[], int tam, int id);
+//int estadia_cancelarEstadia(eEstadiaDiaria estadias[], int tam);
 
 #endif /* ESTADIADIARIA_H_ */
