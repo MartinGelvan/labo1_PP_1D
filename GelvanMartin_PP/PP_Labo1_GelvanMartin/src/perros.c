@@ -12,7 +12,6 @@
 #include "nexo.h"
 #include "Inputs.h"
 
-
 void perros_inicializarArray(ePerro perros[], int tam) {
 	int i;
 	for (i = 0; i < tam; i++) {
@@ -73,13 +72,16 @@ int perro_buscarPorId(ePerro perros[], int tam, int id)
 
 void perro_mostrarUno(ePerro perro)
 {
-	printf("%-15d %-20s %-20s %-20d\n", perro.id, perro.nombre, perro.raza, perro.edad);
+	printf("\n%-15d %-20s %-20s %-20d\n", perro.id, perro.nombre, perro.raza, perro.edad);
 }
 
 void perro_mostrarTodos(ePerro perros[], int tam)
 {
 	int i;
-	printf("\nMostrando lista de perros...\n\n");
+	printf("\nMostrando lista de perros...\n");
+	printf("บบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบ\n");
+	printf("%-15s %-20s %-20s %-20s\n", "ID", "NOMBRE", "RAZA", "EDAD");
+	printf("\nบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบ");
 	for(i=0; i<tam; i++)
 	{
 		if(perros[i].estadoPerro == OCUPADO)
@@ -173,3 +175,260 @@ int perro_borrarUno(ePerro perros[], int tam)
 
 	return retorno;
 }
+
+int perro_ModificarUno(ePerro perros[], int tam,int idIngresado)
+{
+	int opcion;
+	//int index;
+	int retorno = -1;
+	ePerro auxPerroAmodificar;
+
+
+
+	if(idIngresado != -1)
+	{
+		printf("\nPerro a modificar:\n\n%-15s %-20s %-20s %-20s\n", "ID", "NOMBRE", "RAZA", "EDAD");
+		perro_mostrarUno(perros[idIngresado]);
+
+		do
+		{
+			auxPerroAmodificar = perros[idIngresado];
+			pedirEntero(&opcion, "บบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบ\n"
+								 "1. MODIFICAR Nombre\n"
+								 "2. MODIFICAR Raza\n"
+								 "3. MODIFICAR Edad\n"
+								 "4. ATRAS\n"
+								 "บบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบ\n"
+								 "Ingrese una opcion: ",
+								 "บบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบ\n"
+								 "1. MODIFICAR Nombre\n"
+								 "2. MODIFICAR Raza\n"
+								 "3. MODIFICAR Edad\n"
+								 "4. ATRAS\n"
+								 "บบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบ\n"
+								 "Opcion invalida, reingrese la opcion (1-4): ", 1, 4);
+
+			switch(opcion)
+			{
+				case 1:
+					printf("\nPerro a modificar:\n\n%-15s %-20s %-20s %-20s\n", "ID", "NOMBRE", "RAZA", "EDAD");
+					perro_mostrarUno(perros[idIngresado]);
+					pedirCadena(auxPerroAmodificar.nombre, "Ingrese el nuevo nombre del perro", "Error, Reingrese el nuevo nombre del perro (Nombre hasta 21 letras)", 21);
+
+					printf("\nPerro modificado:\n\n%-15s %-20s %-20s %-20s\n", "ID", "NOMBRE", "RAZA", "EDAD");
+					perro_mostrarUno(auxPerroAmodificar);
+
+					if(pedirConfirmacion("\nIngrese 's' para confirmar la modificacion del perro: ")==0)
+					{
+						strcpy(perros[idIngresado].nombre , auxPerroAmodificar.nombre);
+						printf("\nPerro %s modificado exitosamente\n\n", perros[idIngresado].nombre);
+						retorno = 0;
+					}
+					else
+					{
+						printf("\nFue cancelada la modificacion del perro\n\n");
+					}
+
+					system("pause");
+					break;
+				case 2:
+					printf("\nPerro a modificar:\n\n%-15s %-20s %-20s %-20s\n", "ID", "NOMBRE", "RAZA", "EDAD");
+					perro_mostrarUno(perros[idIngresado]);
+					pedirCadena(auxPerroAmodificar.raza, "Ingrese la nueva raza del perro: ", "Error, Reingrese una raza (Raza hasta 21 letras): ",21);
+
+					printf("\nPerro a modificar:\n\n%-15s %-20s %-20s %-20s\n", "ID", "NOMBRE", "RAZA", "EDAD");
+					perro_mostrarUno(auxPerroAmodificar);
+
+					if(pedirConfirmacion("\nIngrese 's' para confirmar la modificacion del producto: ")==0)
+					{
+						strcpy(perros[idIngresado].raza , auxPerroAmodificar.raza);
+						printf("\nPerro %s modificado exitosamente\n\n", perros[idIngresado].nombre);
+						retorno = 0;
+					}
+					else
+					{
+						printf("\nSe cancelo la modificacion del perro\n\n");
+					}
+
+					system("pause");
+					break;
+				case 3:
+					printf("\nPerro a modificar:\n\n%-15s %-20s %-20s %-20s\n", "ID", "NOMBRE", "RAZA", "EDAD");
+					perro_mostrarUno(perros[idIngresado]);
+					pedirEntero(&auxPerroAmodificar.edad, "Ingrese la nueva edad del perro: ",
+								"Error, Reingrese una nueva edad (Edad 0-21 anios): ",0,21);
+
+					printf("\nPerro a modificar:\n\n%-15s %-20s %-20s %-20s\n", "ID", "NOMBRE", "RAZA", "EDAD");
+					perro_mostrarUno(auxPerroAmodificar);
+
+					if(pedirConfirmacion("\nIngrese 's' para confirmar la modificacion del producto: ")==0)
+					{
+						perros[idIngresado].edad = auxPerroAmodificar.edad;
+						printf("\nPerro %s modificado exitosamente\n\n", perros[idIngresado].nombre);
+						retorno = 0;
+					}
+					else
+					{
+						printf("\nSe cancelo la modificacion del perro\n\n");
+					}
+
+					system("pause");
+					break;
+
+				case 4:
+					break;
+			}
+		}while(opcion != 4);
+	}
+	else
+	{
+		printf("\nError, no se encuentra ese perro\n\n");
+	}
+
+	return retorno;
+}
+
+int perro_promedioPorEdadDePerros(ePerro perros[], int tam)
+{
+	int retorno=-1;
+	int contPerros=0;
+	int i;
+	float resultado=0;
+	float promedio=0;
+	int acumEdades=0;
+
+
+	for(i=0; i<tam; i++)
+	{
+		if(perros[i].estadoPerro==OCUPADO)
+		{
+
+			contPerros++;
+			acumEdades= acumEdades+perros[i].edad;
+		}
+	}
+
+	promedio= acumEdades/contPerros;
+	resultado=promedio;
+	printf("\nEl promedio de las edades de los perros es de %.2f\n", resultado);
+
+	retorno=0;
+
+
+	return retorno;
+}
+/*
+int perro_ModificarUno(ePerro perros[], int tam)
+{
+	int opcion;
+	int idIngresado;
+	int index;
+	int retorno = -1;
+	ePerro auxPerroAmodificar;
+
+	pedirEntero(&idIngresado, "Ingrese el ID del perro a modificar (7000-8000): ", "Reingrese el ID del perro a modificar (7000-8000): ", 7000, 8000);
+	index = perro_buscarPorId(perros, tam, idIngresado);
+
+	if(index != -1)
+	{
+		printf("\nPerro a modificar:\n\n%-15s %-20s %-20s %-20s\n", "ID", "NOMBRE", "RAZA", "EDAD");
+		perro_mostrarUno(perros[index]);
+
+		do
+		{
+			auxPerroAmodificar = perros[index];
+			pedirEntero(&opcion, "บบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบ\n"
+								 "1. MODIFICAR Nombre\n"
+								 "2. MODIFICAR Raza\n"
+								 "3. MODIFICAR Edad\n"
+								 "4. ATRAS\n"
+								 "บบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบ\n"
+								 "Ingrese una opcion: ",
+								 "บบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบ\n"
+								 "1. MODIFICAR Nombre\n"
+								 "2. MODIFICAR Raza\n"
+								 "3. MODIFICAR Edad\n"
+								 "4. ATRAS\n"
+								 "บบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบ\n"
+								 "Opcion invalida, reingrese la opcion (1-4): ", 1, 4);
+
+			switch(opcion)
+			{
+				case 1:
+					printf("\nPerro a modificar:\n\n%-15s %-20s %-20s %-20s\n", "ID", "NOMBRE", "RAZA", "EDAD");
+					perro_mostrarUno(perros[index]);
+					pedirCadena(auxPerroAmodificar.nombre, "Ingrese el nuevo nombre del perro", "Error, Reingrese el nuevo nombre del perro (Nombre hasta 21 letras)", 21);
+
+					printf("\nPerro modificado:\n\n%-15s %-20s %-20s %-20s\n", "ID", "NOMBRE", "RAZA", "EDAD");
+					perro_mostrarUno(auxPerroAmodificar);
+
+					if(pedirConfirmacion("\nIngrese 's' para confirmar la modificacion del perro: ")==0)
+					{
+						strcpy(perros[index].nombre , auxPerroAmodificar.nombre);
+						printf("\nPerro %s modificado exitosamente\n\n", perros[index].nombre);
+						retorno = 0;
+					}
+					else
+					{
+						printf("\nFue cancelada la modificacion del perro\n\n");
+					}
+
+					system("pause");
+					break;
+				case 2:
+					printf("\nPerro a modificar:\n\n%-15s %-20s %-20s %-20s\n", "ID", "NOMBRE", "RAZA", "EDAD");
+					perro_mostrarUno(perros[index]);
+					pedirCadena(auxPerroAmodificar.raza, "Ingrese la nueva raza del perro: ", "Error, Reingrese una raza (Raza hasta 21 letras): ",21);
+
+					printf("\nPerro a modificar:\n\n%-15s %-20s %-20s %-20s\n", "ID", "NOMBRE", "RAZA", "EDAD");
+					perro_mostrarUno(auxPerroAmodificar);
+
+					if(pedirConfirmacion("\nIngrese 's' para confirmar la modificacion del producto: ")==0)
+					{
+						strcpy(perros[index].raza , auxPerroAmodificar.raza);
+						printf("\nPerro %s modificado exitosamente\n\n", perros[index].nombre);
+						retorno = 0;
+					}
+					else
+					{
+						printf("\nSe cancelo la modificacion del perro\n\n");
+					}
+
+					system("pause");
+					break;
+				case 3:
+					printf("\nPerro a modificar:\n\n%-15s %-20s %-20s %-20s\n", "ID", "NOMBRE", "RAZA", "EDAD");
+					perro_mostrarUno(perros[index]);
+					pedirEntero(&auxPerroAmodificar.edad, "Ingrese la nueva edad del perro: ",
+								"Error, Reingrese una nueva edad (Edad 0-21 anios): ",0,21);
+
+					printf("\nPerro a modificar:\n\n%-15s %-20s %-20s %-20s\n", "ID", "NOMBRE", "RAZA", "EDAD");
+					perro_mostrarUno(auxPerroAmodificar);
+
+					if(pedirConfirmacion("\nIngrese 's' para confirmar la modificacion del producto: ")==0)
+					{
+						perros[index].edad = auxPerroAmodificar.edad;
+						printf("\nPerro %s modificado exitosamente\n\n", perros[index].nombre);
+						retorno = 0;
+					}
+					else
+					{
+						printf("\nSe cancelo la modificacion del perro\n\n");
+					}
+
+					system("pause");
+					break;
+
+				case 4:
+					break;
+			}
+		}while(opcion != 4);
+	}
+	else
+	{
+		printf("\nError, no se encuentra ese perro\n\n");
+	}
+
+	return retorno;
+}
+*/

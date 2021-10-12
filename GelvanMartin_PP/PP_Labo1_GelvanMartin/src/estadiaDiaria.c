@@ -26,9 +26,9 @@ void estadia_hardCodearEstadia(eEstadiaDiaria estadias[], int tam)
 	int i;
 	int id[] = { 100000, 100001, 100002 };
 	char nombreDuenio[][21] = { "Juan", "Lucas", "Marta" };
-	int telefonoContacto[] = { 2, 12, 13 };
+	int telefonoContacto[] = { 1565745216, 1587454125, 1584213768 };
 	int idPerro[] = { 7000, 7001, 7002 };
-	int fecha[]= {4765112,1148745231,41426522 };
+	eFecha fecha[]= {{2,3,2020},{14,12,2023},{20,6,2030} };
 
 
 	for (i = 0; i < tam - 2; i++) {
@@ -130,4 +130,5 @@ int estadia_cancelarEstadia(eEstadiaDiaria estadias[], int tam)
 
 	return retorno;
 }
+
 */

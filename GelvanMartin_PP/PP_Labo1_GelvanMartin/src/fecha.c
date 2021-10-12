@@ -23,9 +23,9 @@ void fecha_hardCodearFecha(eFecha fechas[], int tam)
 {
 	int i;
 
-	int dia[]= {2,14,12};
-	int mes[]={3,12,5};
-	int anio[]={2020,2023,2025};
+	int dia[]= {2,14,20};
+	int mes[]={3,12,6};
+	int anio[]={2020,2023,2030};
 
 	for (i = 0; i < tam - 2; i++) {
 		fechas[i].dia = dia[i];

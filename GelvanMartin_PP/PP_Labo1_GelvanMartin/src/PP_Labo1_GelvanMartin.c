@@ -10,22 +10,24 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include "nexo.h"
 #define  TAMPERROS 5
 #define  TAMESTADIAS 5
 #define  TAMFECHAS 5
+#include "nexo.h"
+
 
 int main(void) {
 	setbuf(stdout, NULL);
 
 	int opcion;
+
 	int ultimoIdEstadia= 100002;
 	ePerro arrayPerros[TAMPERROS];
 	eEstadiaDiaria arrayEstadias[TAMESTADIAS];
 	eFecha arrayFechas[TAMFECHAS];
 	int cantidadEstadias=0;
-	int cantidadPerros=0;
 
+	int cantidadPerros=0;
 
 
 	perros_inicializarArray(arrayPerros, TAMPERROS);
@@ -37,8 +39,8 @@ int main(void) {
 	fecha_hardCodearFecha(arrayFechas, TAMFECHAS);
 
 
-
-	do {
+	do
+	{
 		pedirEntero(&opcion, "บบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบ\n"
 				"1. Reservar estadia\n"
 				"2. Modificar estadia\n"
@@ -60,20 +62,23 @@ int main(void) {
 				"บบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบ\n"
 				"Opcion invalida, reingrese: ", 1, 7);
 
-		switch (opcion) {
-		case 1:
+		switch(opcion)
+		{
+			case 1:
 			if(perro_Estadia_Fecha_agregarEstadiaPerro(arrayPerros,TAMPERROS,arrayEstadias,TAMESTADIAS,arrayFechas, TAMFECHAS,ultimoIdEstadia)==0)
 			{
 				cantidadEstadias++;
-				cantidadPerros++;
 				ultimoIdEstadia++;
+				cantidadPerros++;
 			}
 			system("pause");
 			break;
-		case 2:
-
+			case 2:
+			perro_Estadia_Fecha_mostrarTodos(arrayPerros, TAMPERROS, arrayEstadias,TAMESTADIAS, TAMFECHAS,arrayFechas);
+			perro_Estadia_ModificarUno( arrayPerros,arrayEstadias,arrayFechas,TAMESTADIAS, TAMPERROS);
+			system("pause");
 			break;
-		case 3:
+			case 3:
 			estadia_mostrarTodos(arrayEstadias, TAMESTADIAS);
 			if(estadia_cancelarEstadia(arrayEstadias, TAMESTADIAS, arrayPerros, TAMPERROS)==0)
 			{
@@ -82,21 +87,27 @@ int main(void) {
 			}
 			system("pause");
 			break;
-		case 4:
-
+			case 4:
+			estadia_ordenarEstadiasPorFechas(arrayEstadias,TAMESTADIAS, arrayFechas);
+			perro_Estadia_Fecha_mostrarTodos(arrayPerros, TAMPERROS, arrayEstadias,TAMESTADIAS, TAMFECHAS,arrayFechas);
+			system("pause");
 			break;
 		case 5:
 			perro_mostrarTodos(arrayPerros, TAMPERROS);
 			system("pause");
 			break;
 		case 6:
-
+			perro_promedioPorEdadDePerros(arrayPerros,TAMPERROS);
+			system("pause");
 			break;
-		case 7:
+			case 7:
 			printf("\nFin del programa\n");
 			break;
 		}
-	} while (opcion != 7);
+	}while(opcion != 7);
 
-	return EXIT_SUCCESS;
+
+return EXIT_SUCCESS;
 }
+
+

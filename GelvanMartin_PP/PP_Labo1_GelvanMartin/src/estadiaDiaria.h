@@ -9,15 +9,15 @@
 #define ESTADIADIARIA_H_
 #include <stdio.h>
 #include <stdlib.h>
-
-
+#include <string.h>
+#include "fecha.h"
 
 typedef struct {
 	int id;
 	char nombreDuenio[21];
 	int telefonoContacto;
 	int idPerro;
-	int fecha;
+	eFecha fecha;
 	int estadoEstadia;
 
 } eEstadiaDiaria;
@@ -29,5 +29,8 @@ void estadia_mostrarUno(eEstadiaDiaria estadia);
 void estadia_mostrarTodos(eEstadiaDiaria estadias[], int tam);
 int estadia_buscarPorId(eEstadiaDiaria estadias[], int tam, int id);
 //int estadia_cancelarEstadia(eEstadiaDiaria estadias[], int tam);
+
+
+
 
 #endif /* ESTADIADIARIA_H_ */

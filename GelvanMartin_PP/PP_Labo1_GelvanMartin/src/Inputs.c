@@ -25,8 +25,6 @@ int pedirEntero(int* entero, char* mensaje, char* mensajeError, int min, int max
 	return retorno;
 }
 
-
-
 int pedirFlotante(float* flotante, char* mensaje, char* mensajeError, float min, float max)
 {
 	int retorno = -1;
@@ -108,3 +106,5 @@ int pedirConfirmacion(char* mensaje)
 
 	return retorno;
 }
+
+

@@ -11,7 +11,8 @@
 #include <stdlib.h>
 #include <string.h>
 #include "Inputs.h"
-
+#define  VACIO 0
+#define  OCUPADO 1
 
 typedef struct {
 	int id;
@@ -31,5 +32,8 @@ void perro_mostrarTodos(ePerro perros[], int tam);
 int perro_cargarUno(ePerro perros[], int i,int ultimoId);
 int perro_agregarPerro(ePerro perros[], int tam, int ultimoId);
 int perro_borrarUno(ePerro perros[], int tam);
+int perro_ModificarUno(ePerro perros[], int tam,int indexPerro);
+int perro_promedioPorEdadDePerros(ePerro perros[], int tam);
+//int perro_ModificarUno(ePerro perros[], int tam);
 
 #endif /* PERROS_H_ */
