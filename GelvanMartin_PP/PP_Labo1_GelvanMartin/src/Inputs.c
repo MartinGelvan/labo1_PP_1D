@@ -1,4 +1,5 @@
 #include "Inputs.h"
+#include "ValidacionesPersonalizado.h"
 
 int pedirEntero(int* entero, char* mensaje, char* mensajeError, int min, int max)
 {
@@ -55,6 +56,7 @@ int pedirCadena(char* cadena, char* mensaje, char* mensajeError, int max)
 	int retorno = -1;
 	char buffer[256];
 	int tam;
+	int esUnaCadena=0;
 
 	if(cadena != NULL && mensaje != NULL && mensajeError != NULL && max > 0)
 	{
@@ -63,13 +65,21 @@ int pedirCadena(char* cadena, char* mensaje, char* mensajeError, int max)
 		scanf("%[^\n]", buffer);
 		tam = strlen(buffer);
 
-		while(tam > max)
+		esUnaCadena=validacion_Cadena(buffer);
+
+
+
+		while(tam > max || esUnaCadena==0)
 		{
 			printf("%s", mensajeError);
 			fflush(stdin);
 			scanf("%[^\n]", buffer);
 			tam = strlen(buffer);
+			esUnaCadena=validacion_Cadena(buffer);
 		}
+
+
+
 
 		strcpy(cadena, buffer);
 		retorno = 0;

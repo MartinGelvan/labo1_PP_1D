@@ -45,14 +45,14 @@ int perro_Estadia_Fecha_cargarUno(eEstadiaDiaria estadias[],int j,ePerro perros[
 
 	estadias[i].id=ultimoId+1;
 
-	pedirCadena(estadias[j].nombreDuenio, "Ingrese nombre del duenio: ", "Nombre invalido, hasta 21 caracteres, reingrese: ", 21);
-	pedirEntero(&estadias[j].telefonoContacto, "Ingrese su telefono de contacto:  ", "Ingrese un numero valido (1000000000-9999999999): ", 1500000000, 1599999999);
+	pedirCadena(estadias[j].nombreDuenio, "Ingrese nombre del duenio: ", "Nombre invalido, hasta 21 caracteres y solo letras, reingrese: ", 21);
+	pedirEntero(&estadias[j].telefonoContacto, "Ingrese su telefono de contacto:  ", "Ingrese un numero valido (1500000000-1599999999): ", 1500000000, 1599999999);
 	pedirEntero(&perros[i].id, "Ingrese el id de su perro:  ", "Ingrese un numero valido (7003-8000): ", 7003, 8000);
 	pedirEntero(&fechas[k].dia, "Ingrese el dia de su estadia:  ", "Ingrese un numero valido (1-30): ", 1, 30);
 	pedirEntero(&fechas[k].mes, "Ingrese el mes de su estadia:  ", "Ingrese un numero valido (1-12): ", 1, 12);
 	pedirEntero(&fechas[k].anio, "Ingrese el año de su estadia:  ", "Ingrese un numero valido (2020-2030): ", 2020, 2030);
-	pedirCadena(perros[i].nombre, "Ingrese el nombre del perro: ", "Nombre invalido, hasta 21 caracteres, reingrese: ", 21);
-	pedirCadena(perros[i].raza, "Ingrese la raza del perro: ", "Raza invalida, hasta 21 caracteres, reingrese: ", 21);
+	pedirCadena(perros[i].nombre, "Ingrese el nombre del perro: ", "Nombre invalido, hasta 21 caracteres y solo letras, reingrese: ", 21);
+	pedirCadena(perros[i].raza, "Ingrese la raza del perro: ", "Raza invalida, hasta 21 caracteres y solo letras, reingrese: ", 21);
 	pedirEntero(&perros[i].edad, "Ingrese la edad:  ", "Ingrese una edad valida (1-21): ", 1, 21);
 	estadias[j].idPerro=perros[i].id;
 	printf("\nEstadia a agregar:\n\n%-15s %-20s %-20s %-20s %-15s %-15s %-20s %-20s %-15s %-15s\n", "ID DUENIO", "NOMBRE DUENIO", "TELEFONO CONTACTO", "DIA","MES", "ANIO","ID MASCOTA","NOMBRE PERRO","RAZA","EDAD PERRO");
@@ -165,11 +165,10 @@ int perro_Estadia_ModificarUno(ePerro perros[],eEstadiaDiaria estadias[],eFecha 
 				case 2:
 
 					idPerroEncontrado=perro_buscarPorId(perros,tamPerro, estadias[index].idPerro);
-					printf("%d\n", estadias[index].idPerro);
-					printf("%d\n", idPerroEncontrado);
+
 					if(idPerroEncontrado!=-1)
 					{
-						printf("Hola");
+
 						perro_ModificarUno(perros,tamPerro,idPerroEncontrado);
 						printf("\nPerro %d modificado exitosamente\n\n", estadias[idPerroEncontrado].idPerro);
 						retorno = 0;
