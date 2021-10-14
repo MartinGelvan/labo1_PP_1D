@@ -5,18 +5,25 @@ int pedirEntero(int* entero, char* mensaje, char* mensajeError, int min, int max
 {
 	int retorno = -1;
 	int numeroIngresado;
+	char auxEntero[200];
+
 
 	if(entero != NULL && mensaje != NULL && mensajeError != NULL && min < max)
 	{
+
 		printf("%s", mensaje);
 		fflush(stdin);
-		scanf("%d", &numeroIngresado);
+		scanf("%s", auxEntero);
 
-		while(numeroIngresado < min || numeroIngresado > max)
+		numeroIngresado=atoi(auxEntero);
+
+		while((esNumeroSimbolo(auxEntero)==0 && validacion_Espacio(mensaje)==0) || (numeroIngresado>max  || numeroIngresado<min))
 		{
 			printf("%s", mensajeError);
 			fflush(stdin);
-			scanf("%d", &numeroIngresado);
+			scanf("%s", auxEntero);
+			numeroIngresado=atoi(auxEntero);
+
 		}
 
 		*entero = numeroIngresado;

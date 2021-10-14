@@ -109,7 +109,7 @@ int main(void) {
 					perro_Estadia_Fecha_mostrarTodos(arrayPerros, TAMPERROS, arrayEstadias,TAMESTADIAS, TAMFECHAS,arrayFechas);
 				}else
 				{
-					printf("NO HAY NADA PARA ORDENAR");
+					printf("\nNO HAY NADA PARA ORDENAR\n");
 				}
 
 			system("pause");
@@ -120,7 +120,7 @@ int main(void) {
 				perro_mostrarTodos(arrayPerros, TAMPERROS);
 			}else
 			{
-				printf("NO HAY NADA PARA MOSTRAR");
+				printf("\nNO HAY NADA PARA MOSTRAR\n");
 			}
 
 			system("pause");

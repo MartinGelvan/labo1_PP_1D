@@ -213,7 +213,7 @@ int perro_ModificarUno(ePerro perros[], int tam,int idIngresado)
 				case 1:
 					printf("\nPerro a modificar:\n\n%-15s %-20s %-20s %-20s\n", "ID", "NOMBRE", "RAZA", "EDAD");
 					perro_mostrarUno(perros[idIngresado]);
-					pedirCadena(auxPerroAmodificar.nombre, "Ingrese el nuevo nombre del perro", "Error, Reingrese el nuevo nombre del perro (Nombre hasta 21 letras y solo letras)", 21);
+					pedirCadena(auxPerroAmodificar.nombre, "Ingrese el nuevo nombre del perro: ", "Error, Reingrese el nuevo nombre del perro (Nombre hasta 21 letras y solo letras)", 21);
 
 					printf("\nPerro modificado:\n\n%-15s %-20s %-20s %-20s\n", "ID", "NOMBRE", "RAZA", "EDAD");
 					perro_mostrarUno(auxPerroAmodificar);

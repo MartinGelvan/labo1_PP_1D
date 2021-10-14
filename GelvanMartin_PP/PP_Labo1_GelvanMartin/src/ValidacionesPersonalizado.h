@@ -35,5 +35,22 @@ int validacion_Cadena(char cadena[]);
  */
 int validacion_AlfaNumerica(char cadena[]);
 
+/**
+ * @fn int validacion_Espacio(char*)
+ * @brief valida si tiene o no espacio
+ *
+ * @param cadena le paso una cadena
+ * @return me devuelve 0 o -1 si tiene o no espacios
+ */
+int validacion_Espacio(char* cadena);
+
+/**
+ * @fn int esNumeroSimbolo(char*)
+ * @brief valida si tiene o no simbolos
+ *
+ * @param cadena paso una cadena
+ * @return me devuelve 0 o -1 si tiene o no simbolos
+ */
+int esNumeroSimbolo(char* cadena);
 
 #endif /* VALIDACIONESPERSONALIZADO_H_ */

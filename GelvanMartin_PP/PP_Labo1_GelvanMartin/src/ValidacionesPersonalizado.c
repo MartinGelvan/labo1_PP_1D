@@ -53,6 +53,7 @@ int validacion_AlfaNumerica(char cadena[]) {
 	return esAlfaNumerico;
 }
 
+
 int validacion_Cadena(char cadena[]) {
 	int i = 0;
 	int esString = 0;
@@ -70,4 +71,50 @@ int validacion_Cadena(char cadena[]) {
 
 	return esString;
 
+}
+
+int validacion_Espacio(char* cadena)
+{
+	int i;
+	int tamanioCadena;
+	int retorno=-1;
+
+	tamanioCadena=strlen(cadena);
+
+	for(i=0;i<tamanioCadena;i++)
+	{
+		if(cadena[i] == ' ' || cadena[i] == '\t' || cadena[i] == '\v' || cadena[i] == '\n')
+		{
+			retorno=0;
+			break;
+		}
+
+	}
+	return retorno;
+}
+
+int esNumeroSimbolo(char* cadena)
+{
+	int i;
+	int tamanioCadena;
+	int retorno=-1;
+
+
+	if(cadena!=NULL)
+	{
+		tamanioCadena=strlen(cadena);
+
+		for(i=0;i<tamanioCadena;i++)
+		{
+			if(isdigit(cadena[i])==0 && cadena[i]!='.' && cadena[0]!='+'
+			&& cadena[0]!='-' && cadena[0]!='!' && cadena[0]!='¡' && cadena[0]!='@' && cadena[0]!='?' && cadena[0]!='¿')
+			{
+				retorno=0;
+				break;
+			}
+
+		}
+
+	}
+	return retorno;
 }

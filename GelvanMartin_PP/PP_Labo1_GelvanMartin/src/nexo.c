@@ -145,7 +145,7 @@ int perro_Estadia_ModificarUno(ePerro perros[],eEstadiaDiaria estadias[],eFecha 
 					estadia_mostrarUno(estadias[index]);
 
 					pedirEntero(&auxEstadiaAmodificar.telefonoContacto, "Ingrese su nuevo telefono de contacto: ",
-								"Error, Reingrese de nuevo su telefono de contacto (Edad 0-8 anios): ",0,8);
+								"Error, Reingrese de nuevo su telefono de contacto (1500000000-1599999999): ",1500000000,1599999999);
 					printf("\nEstadia modificada:\n\n%-15s %-20s %-20s\n", "ID", "NOMBRE DUENIO", "TELEFONO");
 					estadia_mostrarUno(auxEstadiaAmodificar);
 
