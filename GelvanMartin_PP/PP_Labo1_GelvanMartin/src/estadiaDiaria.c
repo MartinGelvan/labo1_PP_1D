@@ -28,15 +28,19 @@ void estadia_hardCodearEstadia(eEstadiaDiaria estadias[], int tam)
 	char nombreDuenio[][21] = { "Juan", "Lucas", "Marta" };
 	int telefonoContacto[] = { 1565745216, 1587454125, 1584213768 };
 	int idPerro[] = { 7000, 7001, 7002 };
-	eFecha fecha[]= {{2,3,2020},{14,12,2023},{20,6,2030} };
+	//eFecha fecha[]= {{2,3,2020},{14,12,2023},{20,6,2030} };
+	int fechaDia[]= {1,13,4};
+	int fechaMes[]= {4,11,2};
+	int fechaAnio[]={2020,2030,2021};
 
-
-	for (i = 0; i < tam - 2; i++) {
+	for (i = 0; i < 3; i++) {
 		estadias[i].id = id[i];
 		strcpy(estadias[i].nombreDuenio, nombreDuenio[i]);
 		estadias[i].telefonoContacto = telefonoContacto[i];
 		estadias[i].idPerro = idPerro[i];
-		estadias[i].fecha = fecha[i];
+		estadias[i].fecha.dia = fechaDia[i];
+		estadias[i].fecha.mes = fechaMes[i];
+		estadias[i].fecha.anio = fechaAnio[i];
 		estadias[i].estadoEstadia = OCUPADO;
 	}
 }

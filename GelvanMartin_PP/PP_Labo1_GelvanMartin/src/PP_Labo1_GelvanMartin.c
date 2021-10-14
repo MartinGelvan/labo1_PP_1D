@@ -10,9 +10,9 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#define  TAMPERROS 5
-#define  TAMESTADIAS 5
-#define  TAMFECHAS 5
+#define  TAMPERROS 50
+#define  TAMESTADIAS 50
+#define  TAMFECHAS 50
 #include "nexo.h"
 
 
@@ -34,8 +34,8 @@ int main(void) {
 	estadia_inicializarArray(arrayEstadias, TAMESTADIAS);
 	fecha_inicializarArray(arrayFechas,TAMFECHAS);
 
-	estadia_hardCodearEstadia(arrayEstadias, TAMFECHAS);
-	perro_hardCodearPerros(arrayPerros, TAMPERROS);
+	//estadia_hardCodearEstadia(arrayEstadias, TAMFECHAS);
+	//perro_hardCodearPerros(arrayPerros, TAMPERROS);
 	fecha_hardCodearFecha(arrayFechas, TAMFECHAS);
 
 
@@ -74,30 +74,64 @@ int main(void) {
 			system("pause");
 			break;
 			case 2:
-			perro_Estadia_Fecha_mostrarTodos(arrayPerros, TAMPERROS, arrayEstadias,TAMESTADIAS, TAMFECHAS,arrayFechas);
-			perro_Estadia_ModificarUno( arrayPerros,arrayEstadias,arrayFechas,TAMESTADIAS, TAMPERROS);
+				if(cantidadEstadias>0)
+				{
+					perro_Estadia_Fecha_mostrarTodos(arrayPerros, TAMPERROS, arrayEstadias,TAMESTADIAS, TAMFECHAS,arrayFechas);
+					perro_Estadia_ModificarUno( arrayPerros,arrayEstadias,arrayFechas,TAMESTADIAS, TAMPERROS);
+				}else
+				{
+					printf("\nNO HAY ESTADIAS PARA MODIFICAR\n");
+				}
+
 			system("pause");
 			break;
 			case 3:
-			estadia_mostrarTodos(arrayEstadias, TAMESTADIAS);
-			if(estadia_cancelarEstadia(arrayEstadias, TAMESTADIAS, arrayPerros, TAMPERROS)==0)
-			{
-				cantidadEstadias--;
-				cantidadPerros--;
-			}
+				if(cantidadEstadias>0)
+				{
+					estadia_mostrarTodos(arrayEstadias, TAMESTADIAS);
+					if(estadia_cancelarEstadia(arrayEstadias, TAMESTADIAS, arrayPerros, TAMPERROS)==0)
+					{
+						cantidadEstadias--;
+
+					}
+				}else
+				{
+					printf("\nNO HAY ESTADIAS PARA CANCELAR\n");
+				}
+
 			system("pause");
 			break;
 			case 4:
-			estadia_ordenarEstadiasPorFechas(arrayEstadias,TAMESTADIAS, arrayFechas);
-			perro_Estadia_Fecha_mostrarTodos(arrayPerros, TAMPERROS, arrayEstadias,TAMESTADIAS, TAMFECHAS,arrayFechas);
+
+				if(cantidadEstadias>0)
+				{
+					estadia_ordenarEstadiasPorFechas(arrayEstadias,TAMESTADIAS, arrayFechas);
+					perro_Estadia_Fecha_mostrarTodos(arrayPerros, TAMPERROS, arrayEstadias,TAMESTADIAS, TAMFECHAS,arrayFechas);
+				}else
+				{
+					printf("NO HAY NADA PARA ORDENAR");
+				}
+
 			system("pause");
 			break;
 		case 5:
-			perro_mostrarTodos(arrayPerros, TAMPERROS);
+			if(cantidadPerros>0)
+			{
+				perro_mostrarTodos(arrayPerros, TAMPERROS);
+			}else
+			{
+				printf("NO HAY NADA PARA MOSTRAR");
+			}
+
 			system("pause");
 			break;
 		case 6:
-			perro_promedioPorEdadDePerros(arrayPerros,TAMPERROS);
+
+			if(cantidadPerros>0)
+			{
+				perro_promedioPorEdadDePerros(arrayPerros,TAMPERROS);
+			}
+
 			system("pause");
 			break;
 			case 7:

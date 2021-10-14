@@ -26,7 +26,7 @@ void perro_hardCodearPerros(ePerro perros[], int tam) {
 	char raza[][21] = { "Sharpei", "Golden", "Galgo" };
 	int edad[] = { 2, 12, 13 };
 
-	for (i = 0; i < tam - 2; i++) {
+	for (i = 0; i < 3; i++) {
 		perros[i].id = id[i];
 		strcpy(perros[i].nombre, nombre[i]);
 		strcpy(perros[i].raza, raza[i]);
