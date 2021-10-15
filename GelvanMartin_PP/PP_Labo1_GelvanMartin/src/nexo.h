@@ -13,6 +13,7 @@
 #include "perros.h"
 #include "estadiaDiaria.h"
 #include "fecha.h"
+#include "duenio.h"
 
 #define  VACIO 0
 #define  OCUPADO 1
@@ -30,7 +31,7 @@
  * @param ultimoId ultimo id de la estadia para incrementar
  * @return devuelve si hubo exito en la carga
  */
-int perro_Estadia_Fecha_cargarUno(eEstadiaDiaria estadias[],int j,ePerro perros[], int i,eFecha fechas[],int k,int ultimoId);
+int perro_Estadia_Fecha_cargarUno(eEstadiaDiaria estadias[],int j,ePerro perros[], int i,eFecha fechas[],int k,int ultimoId, int tam, eDuenio duenios[]);
 
 /**
  * @fn int perro_Estadia_Fecha_agregarEstadiaPerro(ePerro[], int, eEstadiaDiaria[], int, eFecha[], int, int)
@@ -45,7 +46,7 @@ int perro_Estadia_Fecha_cargarUno(eEstadiaDiaria estadias[],int j,ePerro perros[
  * @param ultimoId ultimoId ultimo id de la estadia para incrementar
  * @return devuelve si hubo exito en el agregado
  */
-int perro_Estadia_Fecha_agregarEstadiaPerro(ePerro perros[],int tam,eEstadiaDiaria estadias[], int tam2, eFecha fechas[], int tam3, int ultimoId);
+int perro_Estadia_Fecha_agregarEstadiaPerro(ePerro perros[],int tam,eEstadiaDiaria estadias[], int tam2, eFecha fechas[], int tam3, int ultimoId, int tam4,eDuenio duenios[]);
 
 /**
  * @fn int perro_Estadia_ModificarUno(ePerro[], eEstadiaDiaria[], eFecha[], int, int)
@@ -104,6 +105,9 @@ void estadia_ordenarEstadiasPorFechas(eEstadiaDiaria estadias[],int tam, eFecha 
  * @return
  */
 int estadia_cancelarEstadia(eEstadiaDiaria estadias[], int tam, ePerro perros[], int tamPerro);
+
+void listadoPerrosConSusEstadias(ePerro perros[], int tam1, eEstadiaDiaria estadias[],int tam2);
+void perrosConMasEstadias(eEstadiaDiaria estadias[]);
 
 
 #endif /* NEXO_H_ */

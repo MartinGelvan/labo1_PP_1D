@@ -25,8 +25,8 @@ void estadia_hardCodearEstadia(eEstadiaDiaria estadias[], int tam)
 {
 	int i;
 	int id[] = { 100000, 100001, 100002 };
-	char nombreDuenio[][21] = { "Juan", "Lucas", "Marta" };
-	int telefonoContacto[] = { 1565745216, 1587454125, 1584213768 };
+	//char nombreDuenio[][21] = { "Juan", "Lucas", "Marta" };
+	//int telefonoContacto[] = { 1565745216, 1587454125, 1584213768 };
 	int idPerro[] = { 7000, 7001, 7002 };
 	int fechaDia[]= {1,13,4};
 	int fechaMes[]= {4,11,2};
@@ -34,8 +34,8 @@ void estadia_hardCodearEstadia(eEstadiaDiaria estadias[], int tam)
 
 	for (i = 0; i < 3; i++) {
 		estadias[i].id = id[i];
-		strcpy(estadias[i].nombreDuenio, nombreDuenio[i]);
-		estadias[i].telefonoContacto = telefonoContacto[i];
+		//strcpy(estadias[i].nombreDuenio, nombreDuenio[i]);
+		//estadias[i].telefonoContacto = telefonoContacto[i];
 		estadias[i].idPerro = idPerro[i];
 		estadias[i].fecha.dia = fechaDia[i];
 		estadias[i].fecha.mes = fechaMes[i];
@@ -79,11 +79,12 @@ int estadia_buscarPorId(eEstadiaDiaria estadias[], int tam, int id)
 }
 
 
+
 void estadia_mostrarUno(eEstadiaDiaria estadia)
 {
 	printf("%-15s %-20s %-20s %-5s %-5s %-10s %-15s\n","ID DUEัO","NOMBRE DUEัO","TELEFONO","DIA","MES","AัO","ID PERRO");
 	printf("บบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบ\n");
-	printf("%-15d %-20s %-20d %-5d %-5d %-10d %-15d\n", estadia.id, estadia.nombreDuenio, estadia.telefonoContacto, estadia.fecha.dia,estadia.fecha.mes,estadia.fecha.anio, estadia.idPerro);
+	printf("%-15d %-20s %-20d %-5d %-5d %-10d %-15d\n", estadia.duenio.id, estadia.duenio.nombre, estadia.duenio.telefono, estadia.fecha.dia,estadia.fecha.mes,estadia.fecha.anio, estadia.idPerro);
 }
 
 void estadia_mostrarTodos(eEstadiaDiaria estadias[], int tam)

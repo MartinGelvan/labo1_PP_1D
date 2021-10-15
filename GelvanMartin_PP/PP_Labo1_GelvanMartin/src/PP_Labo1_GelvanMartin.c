@@ -13,6 +13,7 @@
 #define  TAMPERROS 50
 #define  TAMESTADIAS 50
 #define  TAMFECHAS 50
+#define  TAMDUENIOS 50
 #include "nexo.h"
 
 
@@ -25,16 +26,19 @@ int main(void) {
 	ePerro arrayPerros[TAMPERROS];
 	eEstadiaDiaria arrayEstadias[TAMESTADIAS];
 	eFecha arrayFechas[TAMFECHAS];
+	eDuenio arrayDuenios[TAMDUENIOS];
 	int cantidadEstadias=0;
-
+	//int cantidadDuenios=3;
 	int cantidadPerros=3;
 
 
 	perros_inicializarArray(arrayPerros, TAMPERROS);
 	estadia_inicializarArray(arrayEstadias, TAMESTADIAS);
 	fecha_inicializarArray(arrayFechas,TAMFECHAS);
+	duenios_inicializarArray(arrayDuenios, TAMDUENIOS);
 
 	//estadia_hardCodearEstadia(arrayEstadias, TAMFECHAS);
+	duenio_hardCodearDuenio(arrayDuenios, TAMDUENIOS);
 	perro_hardCodearPerros(arrayPerros, TAMPERROS);
 	fecha_hardCodearFecha(arrayFechas, TAMFECHAS);
 
@@ -48,7 +52,9 @@ int main(void) {
 				"4. Listar estadias\n"
 				"5. Listar perros\n"
 				"6. Promedio edad perros\n"
-				"7. SALIR\n"
+				"7. El perro que tiene mas estadias reservadas\n"
+				"8. Listado de perros con sus estadํas diarias reservadas.\n"
+				"9. SALIR\n"
 				"บบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบ\n"
 				"Ingrese una opcion: ",
 				"บบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบ\n"
@@ -58,14 +64,16 @@ int main(void) {
 				"4. Listar estadias\n"
 				"5. Listar perros\n"
 				"6. Promedio edad perros\n"
-				"7. SALIR\n"
+				"7. El perro que tiene mas estadias reservadas\n"
+				"8. Listado de perros con sus estadias diarias reservadas.\n"
+				"9. SALIR\n"
 				"บบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบ\n"
-				"Opcion invalida, reingrese: ", 1, 7);
+				"Opcion invalida, reingrese: ", 1, 9);
 
 		switch(opcion)
 		{
 			case 1:
-			if(perro_Estadia_Fecha_agregarEstadiaPerro(arrayPerros,TAMPERROS,arrayEstadias,TAMESTADIAS,arrayFechas, TAMFECHAS,ultimoIdEstadia)==0)
+			if(perro_Estadia_Fecha_agregarEstadiaPerro(arrayPerros,TAMPERROS,arrayEstadias, TAMESTADIAS, arrayFechas,TAMFECHAS,ultimoIdEstadia, TAMDUENIOS,arrayDuenios)==0)
 			{
 				cantidadEstadias++;
 				ultimoIdEstadia++;
@@ -133,15 +141,41 @@ int main(void) {
 			if(cantidadPerros>0)
 			{
 				perro_promedioPorEdadDePerros(arrayPerros,TAMPERROS);
+			}else
+			{
+				printf("\nNO HAY NADA PARA MOSTRAR\n");
 			}
 
 			system("pause");
 			break;
-			case 7:
+
+		case 7:
+				if(cantidadPerros>0)
+				{
+					perrosConMasEstadias(arrayEstadias);
+				}else
+				{
+					printf("\nNO HAY NADA PARA MOSTRAR\n");
+				}
+		break;
+
+		case 8:
+			if( cantidadPerros>0 && cantidadEstadias>0)
+			{
+				listadoPerrosConSusEstadias(arrayPerros,TAMPERROS, arrayEstadias,TAMESTADIAS);
+
+			}else
+			{
+				printf("NO HAY NADA PARA MOSTRAR\n");
+			}
+			system("pause");
+		break;
+
+		case 9:
 			printf("\nFin del programa\n");
 			break;
 		}
-	}while(opcion != 7);
+	}while(opcion != 9);
 
 
 return EXIT_SUCCESS;

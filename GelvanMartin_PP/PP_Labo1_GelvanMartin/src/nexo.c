@@ -11,12 +11,13 @@
 #include "Inputs.h"
 #include "nexo.h"
 
-
+/*
 void perro_Estadia__Fecha_mostrarUno(eEstadiaDiaria estadia, ePerro perro, eFecha fecha)
 {
 	printf("\n%-15d %-20s %-20d %-20d %-20d %-20d %-15d %-20s %-20s %-15d\n", estadia.id, estadia.nombreDuenio, estadia.telefonoContacto,estadia.fecha.dia,estadia.fecha.mes, estadia.fecha.anio, perro.id, perro.nombre, perro.raza, perro.edad);
 }
-
+*/
+/*
 void perro_Estadia_Fecha_mostrarTodos(ePerro perros[], int tam1, eEstadiaDiaria estadias[],int tam2, int tam3,eFecha fechas[])
 {
 	int i;
@@ -38,16 +39,36 @@ void perro_Estadia_Fecha_mostrarTodos(ePerro perros[], int tam1, eEstadiaDiaria 
 	}
 	printf("\n");
 }
-
-int perro_Estadia_Fecha_cargarUno(eEstadiaDiaria estadias[],int j,ePerro perros[], int i,eFecha fechas[],int k,int ultimoId)
+*/
+int perro_Estadia_Fecha_cargarUno(eEstadiaDiaria estadias[],int j,ePerro perros[], int i,eFecha fechas[],int k,int ultimoId, int tam,eDuenio duenios[])
 {
 	int retorno = -1;
+	 int idDuenio;
+
 
 	estadias[j].id=ultimoId+1;
 
-	pedirCadena(estadias[j].nombreDuenio, "Ingrese nombre del duenio: ", "Nombre invalido, hasta 21 caracteres y solo letras, reingrese: ", 21);
-	pedirEntero(&estadias[j].telefonoContacto, "Ingrese su telefono de contacto:  ", "Ingrese un numero valido (1500000000-1599999999): ", 1500000000, 1599999999);
+
+	//pedirCadena(estadias[j].nombreDuenio, "Ingrese nombre del duenio: ", "Nombre invalido, hasta 21 caracteres y solo letras, reingrese: ", 21);
+	//pedirEntero(&estadias[j].telefonoContacto, "Ingrese su telefono de contacto:  ", "Ingrese un numero valido (1500000000-1599999999): ", 1500000000, 1599999999);
 	pedirEntero(&estadias[j].idPerro, "Ingrese el id de su perro:  ", "Ingrese un numero valido (7000-7002): ", 7000, 7002);
+
+	pedirEntero(&estadias[j].duenio.id, "Ingrese el id del duenio:  ", "Ingrese un numero valido (30000-30002): ", 30000, 30002);
+
+	idDuenio=duenio_buscarPorId(duenios, tam, estadias[j].duenio.id);
+
+
+	if(idDuenio!=-1)
+	{
+
+
+			strcpy(estadias[j].duenio.nombre,duenios[idDuenio].nombre);
+			estadias[j].duenio.telefono=duenios[idDuenio].telefono;
+
+	}
+
+
+
 	pedirEntero(&estadias[j].fecha.dia, "Ingrese el dia de su estadia:  ", "Ingrese un numero valido (1-30): ", 1, 30);
 	pedirEntero(&estadias[j].fecha.mes, "Ingrese el mes de su estadia:  ", "Ingrese un numero valido (1-12): ", 1, 12);
 	pedirEntero(&estadias[j].fecha.anio, "Ingrese el a๑o de su estadia:  ", "Ingrese un numero valido (2020-2030): ", 2020, 2030);
@@ -55,7 +76,7 @@ int perro_Estadia_Fecha_cargarUno(eEstadiaDiaria estadias[],int j,ePerro perros[
 	estadia_mostrarUno(estadias[j]);
 
 
-	if(pedirConfirmacion("\nIngrese 's' para confirmar el alta del producto: ")==0)
+	if(pedirConfirmacion("\nIngrese 's' para confirmar el alta de la estadia: ")==0)
 	{
 
 		estadias[j].estadoEstadia = OCUPADO;
@@ -67,7 +88,7 @@ int perro_Estadia_Fecha_cargarUno(eEstadiaDiaria estadias[],int j,ePerro perros[
 }
 
 
-int perro_Estadia_Fecha_agregarEstadiaPerro(ePerro perros[],int tam,eEstadiaDiaria estadias[], int tam2, eFecha fechas[], int tam3, int ultimoId)
+int perro_Estadia_Fecha_agregarEstadiaPerro(ePerro perros[],int tam,eEstadiaDiaria estadias[], int tam2, eFecha fechas[], int tam3, int ultimoId, int tam4,eDuenio duenios[])
 {
 	int retorno = -1;
 	int indexPerro = perro_buscarEspacioLibre(perros, tam);
@@ -78,7 +99,7 @@ int perro_Estadia_Fecha_agregarEstadiaPerro(ePerro perros[],int tam,eEstadiaDiar
 	{
 
 		printf("\n\n\n");
-		if (perro_Estadia_Fecha_cargarUno(estadias,indexEstadia,perros,indexPerro,fechas,indexFecha,ultimoId)==0) {
+		if (perro_Estadia_Fecha_cargarUno(estadias,indexEstadia,perros,indexPerro,fechas,indexFecha,ultimoId,tam4,duenios)==0) {
 			printf("\nSe cargo la estadia\n\n");
 			retorno = 0;
 		} else
@@ -138,14 +159,14 @@ int perro_Estadia_ModificarUno(ePerro perros[],eEstadiaDiaria estadias[],eFecha 
 					printf("\nEstadia a modificar:\n\n");
 					estadia_mostrarUno(estadias[index]);
 
-					pedirEntero(&auxEstadiaAmodificar.telefonoContacto, "Ingrese su nuevo telefono de contacto: ",
+					pedirEntero(&auxEstadiaAmodificar.duenio.telefono, "Ingrese su nuevo telefono de contacto: ",
 								"Error, Reingrese de nuevo su telefono de contacto (1500000000-1599999999): ",1500000000,1599999999);
 					printf("\nEstadia modificada:\n\n%-15s %-20s %-20s\n", "ID", "NOMBRE DUENIO", "TELEFONO");
 					estadia_mostrarUno(auxEstadiaAmodificar);
 
 					if(pedirConfirmacion("\nIngrese 's' para confirmar la modificacion de la estadia: ")==0)
 					{
-						estadias[index].telefonoContacto=auxEstadiaAmodificar.telefonoContacto;
+						//estadias[index].telefonoContacto=auxEstadiaAmodificar.telefonoContacto;
 						printf("\nEstadia %d modificada exitosamente\n\n", estadias[index].id);
 						retorno = 0;
 					}
@@ -235,7 +256,7 @@ void estadia_ordenarEstadiasPorFechas(eEstadiaDiaria estadias[],int tam, eFecha 
 										estadias[j] = auxEstadia;
 									}else
 									{
-										if(strcmp(estadias[i].nombreDuenio,estadias[j].nombreDuenio)==1)
+										if(strcmp(estadias[i].duenio.nombre,estadias[j].duenio.nombre)==1)
 										{
 											auxEstadia= estadias[i];
 											estadias[i] = estadias[j];
@@ -296,6 +317,95 @@ int estadia_cancelarEstadia(eEstadiaDiaria estadias[], int tam, ePerro perros[],
 
 	return retorno;
 }
+
+
+
+void listadoPerrosConSusEstadias(ePerro perros[], int tam1, eEstadiaDiaria estadias[],int tam2)
+{
+	int i;
+	int j;
+
+	printf("LISTA DE PERROS CON SUS ESTADIAS\n\n");
+	for(i=0;i<tam1;i++)
+	{
+		if(perros[i].estadoPerro==OCUPADO)
+		{
+			printf("%s\n",perros[i].nombre);
+			printf("บบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบ\n");
+
+			for(j=0;j<tam1;j++)
+			{
+				if(estadias[j].estadoEstadia==OCUPADO && perros[i].id==estadias[j].idPerro)
+				{
+
+					printf("%-5s %-5s %-5s %-5s\n","ID","DIA","MES","AัO");
+					printf("%-5d %-5d %-5d %-5d\n",estadias[j].id,estadias[j].fecha.dia,estadias[j].fecha.mes,estadias[j].fecha.anio);
+					printf("บบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบ\n\n");
+
+				}
+
+			}
+		}
+
+
+	}
+
+}
+
+
+
+
+void perrosConMasEstadias(eEstadiaDiaria estadias[])
+{
+	int tam=50;
+	int i;
+	int contadorLobo=0;
+	int contadorSheila= 0;
+	int contadorReina= 0;
+	int mayor;
+	int iD;
+
+	for(i=0;i<tam; i++)
+	{
+		if(estadias[i].idPerro==7000)
+		{
+			contadorLobo++;
+		}else
+		{
+			if(estadias[i].idPerro==7001)
+			{
+				contadorSheila++;
+			}else
+			{
+				if(estadias[i].idPerro==7002)
+				{
+					contadorReina++;
+				}
+			}
+		}
+
+	}
+
+	iD=estadias[i].idPerro;
+	if(contadorLobo>contadorSheila && contadorLobo>contadorReina)
+	{
+		mayor=contadorLobo;
+	}else
+	{
+		if(contadorSheila>contadorLobo && contadorSheila>contadorReina)
+			{
+				mayor=contadorSheila;
+			}else
+			{
+				mayor=contadorReina;
+			}
+	}
+
+	printf("El perro que tiene mas estadias es %d con un total de %d estadias\n",iD,mayor);
+
+}
+
+
 
 /*
 int perro_Estadia_Fecha_cargarUno(eEstadiaDiaria estadias[],int j,ePerro perros[], int i,eFecha fechas[],int k,int ultimoId)

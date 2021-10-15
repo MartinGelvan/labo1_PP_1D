@@ -11,14 +11,16 @@
 #include <stdlib.h>
 #include <string.h>
 #include "fecha.h"
+#include "duenio.h"
 
 typedef struct {
 	int id;
-	char nombreDuenio[21];
-	int telefonoContacto;
+	//char nombreDuenio[21];
+	//int telefonoContacto;
 	int idPerro;
 	eFecha fecha;
 	int estadoEstadia;
+	eDuenio duenio;
 
 } eEstadiaDiaria;
 
