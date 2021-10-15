@@ -78,7 +78,7 @@ void estadia_mostrarTodos(eEstadiaDiaria estadias[], int tam);
  * @return
  */
 int estadia_buscarPorId(eEstadiaDiaria estadias[], int tam, int id);
-//int estadia_cancelarEstadia(eEstadiaDiaria estadias[], int tam);
+
 
 
 

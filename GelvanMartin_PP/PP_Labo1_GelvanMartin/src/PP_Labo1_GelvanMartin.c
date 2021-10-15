@@ -21,13 +21,13 @@ int main(void) {
 
 	int opcion;
 
-	int ultimoIdEstadia= 100002;
+	int ultimoIdEstadia= 99999;
 	ePerro arrayPerros[TAMPERROS];
 	eEstadiaDiaria arrayEstadias[TAMESTADIAS];
 	eFecha arrayFechas[TAMFECHAS];
 	int cantidadEstadias=0;
 
-	int cantidadPerros=0;
+	int cantidadPerros=3;
 
 
 	perros_inicializarArray(arrayPerros, TAMPERROS);
@@ -35,7 +35,7 @@ int main(void) {
 	fecha_inicializarArray(arrayFechas,TAMFECHAS);
 
 	//estadia_hardCodearEstadia(arrayEstadias, TAMFECHAS);
-	//perro_hardCodearPerros(arrayPerros, TAMPERROS);
+	perro_hardCodearPerros(arrayPerros, TAMPERROS);
 	fecha_hardCodearFecha(arrayFechas, TAMFECHAS);
 
 
@@ -69,14 +69,16 @@ int main(void) {
 			{
 				cantidadEstadias++;
 				ultimoIdEstadia++;
-				cantidadPerros++;
+				//cantidadPerros++;
+
 			}
 			system("pause");
 			break;
 			case 2:
 				if(cantidadEstadias>0)
 				{
-					perro_Estadia_Fecha_mostrarTodos(arrayPerros, TAMPERROS, arrayEstadias,TAMESTADIAS, TAMFECHAS,arrayFechas);
+					//perro_Estadia_Fecha_mostrarTodos(arrayPerros, TAMPERROS, arrayEstadias,TAMESTADIAS, TAMFECHAS,arrayFechas);
+					estadia_mostrarTodos(arrayEstadias, TAMESTADIAS);
 					perro_Estadia_ModificarUno( arrayPerros,arrayEstadias,arrayFechas,TAMESTADIAS, TAMPERROS);
 				}else
 				{
@@ -106,7 +108,8 @@ int main(void) {
 				if(cantidadEstadias>0)
 				{
 					estadia_ordenarEstadiasPorFechas(arrayEstadias,TAMESTADIAS, arrayFechas);
-					perro_Estadia_Fecha_mostrarTodos(arrayPerros, TAMPERROS, arrayEstadias,TAMESTADIAS, TAMFECHAS,arrayFechas);
+					//perro_Estadia_Fecha_mostrarTodos(arrayPerros, TAMPERROS, arrayEstadias,TAMESTADIAS, TAMFECHAS,arrayFechas);
+					estadia_mostrarTodos(arrayEstadias, TAMESTADIAS);
 				}else
 				{
 					printf("\nNO HAY NADA PARA ORDENAR\n");

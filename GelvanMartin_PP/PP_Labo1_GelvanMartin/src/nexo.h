@@ -19,7 +19,7 @@
 
 /**
  * @fn int perro_Estadia_Fecha_cargarUno(eEstadiaDiaria[], int, ePerro[], int, eFecha[], int, int)
- * @brief
+ * @brief  cargo una estadia
  *
  * @param estadias lista de estadias
  * @param j tamanio lista estadias
@@ -34,7 +34,7 @@ int perro_Estadia_Fecha_cargarUno(eEstadiaDiaria estadias[],int j,ePerro perros[
 
 /**
  * @fn int perro_Estadia_Fecha_agregarEstadiaPerro(ePerro[], int, eEstadiaDiaria[], int, eFecha[], int, int)
- * @brief
+ * @brief agrego una estadia
  *
  * @param perros lista perros
  * @param tam tamanio lista perros
@@ -49,7 +49,7 @@ int perro_Estadia_Fecha_agregarEstadiaPerro(ePerro perros[],int tam,eEstadiaDiar
 
 /**
  * @fn int perro_Estadia_ModificarUno(ePerro[], eEstadiaDiaria[], eFecha[], int, int)
- * @brief
+ * @brief modifico la estadia tanto el numero como el perro (El ID)
  *
  * @param perros lista perros
  * @param estadias lista estadias

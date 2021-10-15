@@ -28,7 +28,6 @@ void estadia_hardCodearEstadia(eEstadiaDiaria estadias[], int tam)
 	char nombreDuenio[][21] = { "Juan", "Lucas", "Marta" };
 	int telefonoContacto[] = { 1565745216, 1587454125, 1584213768 };
 	int idPerro[] = { 7000, 7001, 7002 };
-	//eFecha fecha[]= {{2,3,2020},{14,12,2023},{20,6,2030} };
 	int fechaDia[]= {1,13,4};
 	int fechaMes[]= {4,11,2};
 	int fechaAnio[]={2020,2030,2021};
@@ -82,9 +81,32 @@ int estadia_buscarPorId(eEstadiaDiaria estadias[], int tam, int id)
 
 void estadia_mostrarUno(eEstadiaDiaria estadia)
 {
-	printf("%-15d %-20s %-20d\n", estadia.id, estadia.nombreDuenio, estadia.telefonoContacto);
+	printf("%-15s %-20s %-20s %-5s %-5s %-10s %-15s\n","ID DUEัO","NOMBRE DUEัO","TELEFONO","DIA","MES","AัO","ID PERRO");
+	printf("บบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบ\n");
+	printf("%-15d %-20s %-20d %-5d %-5d %-10d %-15d\n", estadia.id, estadia.nombreDuenio, estadia.telefonoContacto, estadia.fecha.dia,estadia.fecha.mes,estadia.fecha.anio, estadia.idPerro);
 }
 
+void estadia_mostrarTodos(eEstadiaDiaria estadias[], int tam)
+{
+	int i;
+	printf("\nMostrando lista de estadias...\n\n");
+	printf("บบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบ\n");
+	for(i=0; i<tam; i++)
+	{
+		if(estadias[i].estadoEstadia == OCUPADO)
+		{
+			estadia_mostrarUno(estadias[i]);
+		}
+	}
+	printf("\n");
+}
+/*
+void estadia_mostrarUno(eEstadiaDiaria estadia)
+{
+	printf("%-15d %-20s %-20d\n", estadia.id, estadia.nombreDuenio, estadia.telefonoContacto);
+}
+*/
+/*
 void estadia_mostrarTodos(eEstadiaDiaria estadias[], int tam)
 {
 	int i;
@@ -98,6 +120,7 @@ void estadia_mostrarTodos(eEstadiaDiaria estadias[], int tam)
 	}
 	printf("\n");
 }
+*/
 /*
 int estadia_cancelarEstadia(eEstadiaDiaria estadias[], int tam)
 {

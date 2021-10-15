@@ -288,6 +288,7 @@ int perro_ModificarUno(ePerro perros[], int tam,int idIngresado)
 	return retorno;
 }
 
+
 int perro_promedioPorEdadDePerros(ePerro perros[], int tam)
 {
 	int retorno=-1;
@@ -317,6 +318,7 @@ int perro_promedioPorEdadDePerros(ePerro perros[], int tam)
 
 	return retorno;
 }
+
 /*
 int perro_ModificarUno(ePerro perros[], int tam)
 {
