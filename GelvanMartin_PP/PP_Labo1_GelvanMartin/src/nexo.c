@@ -166,7 +166,7 @@ int perro_Estadia_ModificarUno(ePerro perros[],eEstadiaDiaria estadias[],eFecha 
 
 					if(pedirConfirmacion("\nIngrese 's' para confirmar la modificacion de la estadia: ")==0)
 					{
-						//estadias[index].telefonoContacto=auxEstadiaAmodificar.telefonoContacto;
+						estadias[index].duenio.telefono=auxEstadiaAmodificar.duenio.telefono;
 						printf("\nEstadia %d modificada exitosamente\n\n", estadias[index].id);
 						retorno = 0;
 					}
@@ -369,16 +369,19 @@ void perrosConMasEstadias(eEstadiaDiaria estadias[])
 	{
 		if(estadias[i].idPerro==7000)
 		{
+
 			contadorLobo++;
 		}else
 		{
 			if(estadias[i].idPerro==7001)
 			{
+
 				contadorSheila++;
 			}else
 			{
 				if(estadias[i].idPerro==7002)
 				{
+
 					contadorReina++;
 				}
 			}
@@ -386,17 +389,21 @@ void perrosConMasEstadias(eEstadiaDiaria estadias[])
 
 	}
 
-	iD=estadias[i].idPerro;
+
+
 	if(contadorLobo>contadorSheila && contadorLobo>contadorReina)
 	{
+		iD=7000;
 		mayor=contadorLobo;
 	}else
 	{
 		if(contadorSheila>contadorLobo && contadorSheila>contadorReina)
-			{
+		{
+				iD=7001;
 				mayor=contadorSheila;
 			}else
 			{
+				iD=7002;
 				mayor=contadorReina;
 			}
 	}

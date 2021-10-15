@@ -82,9 +82,9 @@ int estadia_buscarPorId(eEstadiaDiaria estadias[], int tam, int id)
 
 void estadia_mostrarUno(eEstadiaDiaria estadia)
 {
-	printf("%-15s %-20s %-20s %-5s %-5s %-10s %-15s\n","ID DUEัO","NOMBRE DUEัO","TELEFONO","DIA","MES","AัO","ID PERRO");
+	printf("%-15s %-15s %-20s %-20s %-5s %-5s %-10s %-15s\n","ID ESTADIA","ID DUEัO","NOMBRE DUEัO","TELEFONO","DIA","MES","AัO","ID PERRO");
 	printf("บบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบ\n");
-	printf("%-15d %-20s %-20d %-5d %-5d %-10d %-15d\n", estadia.duenio.id, estadia.duenio.nombre, estadia.duenio.telefono, estadia.fecha.dia,estadia.fecha.mes,estadia.fecha.anio, estadia.idPerro);
+	printf("%-15d %-15d %-20s %-20d %-5d %-5d %-10d %-15d\n",estadia.id, estadia.duenio.id, estadia.duenio.nombre, estadia.duenio.telefono, estadia.fecha.dia,estadia.fecha.mes,estadia.fecha.anio, estadia.idPerro);
 }
 
 void estadia_mostrarTodos(eEstadiaDiaria estadias[], int tam)
